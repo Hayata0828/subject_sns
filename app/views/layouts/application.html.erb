@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SNS</title>
+    <%= csrf_meta_tags %>
+    <meta  name="viewport" content="width=device-width">
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header>
+       <div style="width: 100%;  height: 100px; padding-top: 20px; text-align: center; background-color: skyblue">
+         <h1 >Welcome to MySNS</h1>
+       </div>
+      <div style="text-align: right;">
+        <% if user_signed_in?%>
+          <%= link_to("Top","/") %>
+          <%= link_to("Tweet Index","/tweets/index") %>
+          <%= link_to("New Tweet","/tweets/new") %>
+          <%= link_to("ログアウト","/users/sign_out", method: :delete, date:{ confirm: "本当にログアウトしますか？"}) %>
+        <% else %>
+          <%= link_to("Top","/") %>
+          <%= link_to("会員登録","/users/sign_up") %>
+        <% end %>
+      </div>
+    </header>
+
+    <p class="alert alert-success" style="text-align: center">
+      <%= notice %>
+    </p>
+    <p class="alert alert-danger" style="text-align: center">
+      <%= alert %>
+    </p>
+    <%= yield %>
+  </body>
+</html>

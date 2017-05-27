@@ -1,0 +1,9 @@
+<h3 style="text-align: center">Edit Tweet</h3>
+
+<%= form_for @tweet do |f| %>
+    <%= f.text_area :content %><br>
+    <%= f.label :"Category" %><br>
+    <%= f.select :category, [["Sports","sports"] ,["Technology","technology"] ,["Gourmet","gourmet"]] %>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <%= f.submit(["Up date"]) %>
+<% end %>
